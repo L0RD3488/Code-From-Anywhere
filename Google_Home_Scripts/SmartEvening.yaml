@@ -1,0 +1,174 @@
+metadata:
+  name: "Enable Normal Evening"
+  description: "Normal Evening Routine"
+automations:
+  starters:
+    - type: assistant.event.OkGoogle
+      eventData: query
+      is: "SystemPromptStartNormalEvening"
+  actions:
+    - type: time.delay
+      for: 5sec
+    - type: assistant.command.Broadcast
+      message: Starting of evening routine
+      devices: Nest Hub - Alex Room
+    - type: time.delay #
+      for: 1min
+    - type: device.command.SetVolume # 1m
+      volumeLevel: 20
+      devices: Nest Hub - Alex Room
+    - type: time.delay #
+      for: 10min
+    - type: device.command.ActivateScene # 10m
+      activate: true
+      devices: ML:B-5
+    - type: device.command.BrightnessAbsolute
+      devices: Night Light - Alex Room
+      brightness: 97
+    - type: device.command.ColorAbsolute
+      devices:
+        - Night Light - Alex Room
+      color:
+        temperature: 5500.0K
+    - type: time.delay #
+      for: 10min
+    - type: device.command.ActivateScene # 20m
+      activate: true
+      devices: ML:W1
+    - type: device.command.ActivateScene
+      activate: true
+      devices: ML:B-5
+    - type: device.command.BrightnessAbsolute
+      devices: Night Light - Alex Room 
+      brightness: 95
+    - type: time.delay #
+      for: 10min
+    - type: device.command.ActivateScene # 30m
+      activate: true
+      devices: ML:B-5
+    - type: device.command.BrightnessAbsolute
+      devices: Night Light - Alex Room
+      brightness: 90
+    - type: device.command.ColorAbsolute
+      devices:
+        - Night Light - Alex Room
+      color:
+        temperature: 5000.0K
+    - type: time.delay #
+      for: 10min
+    - type: device.command.ActivateScene # 40m
+      activate: true
+      devices: ML:B-5
+    - type: device.command.ActivateScene
+      activate: true
+      devices: ML:W1
+    - type: device.command.BrightnessAbsolute
+      devices: Night Light - Alex Room
+      brightness: 85
+    - type: time.delay #
+      for: 10min
+    - type: device.command.ActivateScene # 50m
+      activate: true
+      devices: ML:B-5
+    - type: device.command.BrightnessAbsolute
+      devices: Night Light - Alex Room 
+      brightness: 80
+    - type: device.command.ColorAbsolute
+      devices:
+        - Night Light - Alex Room
+      color:
+        temperature: 4500.0K
+    - type: time.delay #
+      for: 10min
+    - type: device.command.ActivateScene # 60m
+      activate: true
+      devices: ML:B-5
+    - type: device.command.ActivateScene
+      activate: true
+      devices: RGB:Red
+    - type: device.command.ActivateScene
+      activate: true
+      devices: ML:W1
+    - type: device.command.BrightnessAbsolute
+      devices: Night Light - Alex Room 
+      brightness: 70
+    - type: device.command.ColorAbsolute
+      devices:
+        - Night Light - Alex Room
+      color:
+        temperature: 4000.0K
+    - type: time.delay #
+      for: 10min
+    - type: device.command.ActivateScene # 70m
+      activate: true
+      devices: ML:B-5
+    - type: device.command.BrightnessAbsolute
+      devices: Night Light - Alex Room
+      brightness: 55
+    - type: device.command.ColorAbsolute
+      devices:
+        - Night Light - Alex Room
+      color:
+        temperature: 3500.0K
+    - type: time.delay #
+      for: 10min
+    - type: device.command.ActivateScene # 80m
+      activate: true
+      devices: ML:B-5
+    - type: device.command.ActivateScene
+      activate: true
+      devices: ML:W1
+    - type: device.command.BrightnessAbsolute
+      devices: Night Light - Alex Room
+      brightness: 40
+    - type: device.command.ColorAbsolute
+      devices:
+        - Night Light - Alex Room
+      color:
+        temperature: 3000.0K
+    - type: time.delay #
+      for: 10min
+    - type: device.command.ActivateScene # 90m
+      activate: true
+      devices: ML:B-5
+    - type: assistant.command.Broadcast
+      message: "30 Minutes left until end of routine"
+      devices: Nest Hub - Alex Room
+    - type: device.command.BrightnessAbsolute
+      devices: Night Light - Alex Room
+      brightness: 30
+    - type: time.delay #
+      for: 10min
+    - type: device.command.ActivateScene # 100m | 20 min left - 10th iteration CHANGING BRIGHTNESS-5 + COLOR TEMPERATURE+1
+      activate: true
+      devices: ML:B-5
+    - type: device.command.ActivateScene
+      activate: true
+      devices: ML:W1
+    - type: time.delay #
+      for: 10min
+    - type: device.command.ActivateScene # 110m | 10 min left - 11th iteration | Using preprogrammed "BEDTIME-LIGHTING" scene FOR Main Light to enfoce bedtime lighting state immideately
+      activate: true
+      devices: "ML: Nightlight"
+    - type: device.command.BrightnessAbsolute
+      devices: Night Light - Alex Room
+      brightness: 25
+    - type: device.command.ColorAbsolute
+      devices:
+        - Night Light - Alex Room
+      color:
+        temperature: 2500.0K
+    - type: time.delay
+      for: 10min
+    - type: assistant.command.Broadcast # 120m
+      message: "Ending of evening routine"
+      devices: Nest Hub - Alex Room
+    - type: device.command.BrightnessAbsolute
+      devices: Night Light - Alex Room
+      brightness: 20
+    - type: device.command.ColorAbsolute
+      devices:
+      - Night Light - Alex Room
+      color:
+        temperature: 2000.0K
+      # WAITING FOR USER NEXT COMMAND
